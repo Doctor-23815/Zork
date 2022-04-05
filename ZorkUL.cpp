@@ -14,32 +14,44 @@ ZorkUL::ZorkUL() {
 }
 
 void ZorkUL::createRooms()  {
-	Room *a, *b, *c, *d, *e, *f, *g, *h, *i;
+    Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
 	a = new Room("a");
         a->addItem(new Item("x", 1, 11));
         a->addItem(new Item("y", 2, 22));
+      array_of_rooms.push_back(a);
 	b = new Room("b");
         b->addItem(new Item("xx", 3, 33));
         b->addItem(new Item("yy", 4, 44));
+      array_of_rooms.push_back(b);
 	c = new Room("c");
+      array_of_rooms.push_back(c);
 	d = new Room("d");
+      array_of_rooms.push_back(d);
 	e = new Room("e");
+      array_of_rooms.push_back(e);
 	f = new Room("f");
+      array_of_rooms.push_back(f);
 	g = new Room("g");
+      array_of_rooms.push_back(g);
 	h = new Room("h");
+      array_of_rooms.push_back(h);
 	i = new Room("i");
+      array_of_rooms.push_back(i);
+    j = new Room("j");
+      array_of_rooms.push_back(j);
 
 //             (N, E, S, W)
 	a->setExits(f, b, d, c);
 	b->setExits(NULL, NULL, NULL, a);
 	c->setExits(NULL, a, NULL, NULL);
-	d->setExits(a, e, NULL, i);
+    d->setExits(a, e, j, i);
 	e->setExits(NULL, NULL, NULL, d);
 	f->setExits(NULL, g, a, h);
 	g->setExits(NULL, NULL, NULL, f);
 	h->setExits(NULL, f, NULL, NULL);
     i->setExits(NULL, d, NULL, NULL);
+    j->setExits(d, NULL, NULL, NULL);
 
         currentRoom = a;
 }
@@ -98,6 +110,10 @@ bool ZorkUL::processCommand(Command command) {
 		cout << "         |         " << endl;
 		cout << "         |         " << endl;
 		cout << "[i] --- [d] --- [e]" << endl;
+        cout << "         |         " << endl;
+        cout << "         |         " << endl;
+        cout << "        [j]        " << endl;
+
 		}
 
 	else if (commandWord.compare("go") == 0)
@@ -138,6 +154,20 @@ bool ZorkUL::processCommand(Command command) {
         }
     }
 */
+    else if (commandWord.compare("teleport") == 0) {
+
+        if (!command.hasSecondWord()) {
+            cout << "invalid input" << endl;
+        } else {
+            teleport(command.getSecondWord());
+            cout << currentRoom-> longDescription() << endl;
+        }
+
+        /*int random_number_generator = rand() % 9+1;
+        cout << random_number_generator << "\n"; */
+
+    }
+
     else if (commandWord.compare("quit") == 0) {
 		if (command.hasSecondWord())
 			cout << "overdefined input"<< endl;
@@ -184,4 +214,20 @@ string ZorkUL::go(string direction) {
 		currentRoom = nextRoom;
 		return currentRoom->longDescription();
 	}
+}
+
+void ZorkUL::teleport(string room){
+    if (room.compare("rand") == 0){
+        unsigned int roomSize = array_of_rooms.size();
+        unsigned int randRoom = rand() % roomSize;
+        currentRoom = array_of_rooms[randRoom];
+    }
+    else{
+        for (unsigned int i = 0; i < array_of_rooms.size(); i++)
+        {
+            if (array_of_rooms[i]->shortDescription().compare(room) == 0)
+                currentRoom = array_of_rooms[i];
+        }
+    }
+
 }
