@@ -1,6 +1,6 @@
-/*#include "Character.h"
+#include "Character.h"
 
-Characterx::Characterx(string description) {
+/*Characterx::Characterx(string description) {
 	this->description = description;
 }
 void Characterx::addItem(Item &item) {
@@ -19,5 +19,3 @@ string Characterx::longDescription()
   return ret;
 }
 */
-
-

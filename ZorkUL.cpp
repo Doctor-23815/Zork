@@ -60,6 +60,7 @@ void ZorkUL::createRooms()  {
  *  Main play routine.  Loops until end of play.
  */
 void ZorkUL::play() {
+    player_name();
 	printWelcome();
 
 	// Enter the main command loop.  Here we repeatedly read commands and
@@ -77,6 +78,30 @@ void ZorkUL::play() {
 	}
 	cout << endl;
 	cout << "end" << endl;
+}
+
+void ZorkUL::player_name(string player_one) {
+
+        string answer;
+
+        cout << endl;
+        cout << "If you would like to give your character a name type yes if not type no." << endl;
+        cout << endl;
+
+        cin >> answer;
+
+        if (answer == "yes") {
+
+            cout << "Enter player name: ";
+            cin >> player_one;
+
+            cout << "Player name is now " << player_one << endl;
+
+        } else {
+
+        cout << "Player name is now " << player_one << endl;
+
+    }
 }
 
 void ZorkUL::printWelcome() {

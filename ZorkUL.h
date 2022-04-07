@@ -22,6 +22,7 @@ private:
         void createItems();
         void displayItems();
         void teleport(string direction);
+        void player_name(string player_one = "Chris");
 
 public:
 	ZorkUL();
