@@ -7,6 +7,7 @@
 #include "item.h"
 #include <iostream>
 #include <string>
+
 using namespace std;
 
 class ZorkUL {
@@ -22,7 +23,7 @@ private:
         void createItems();
         void displayItems();
         void teleport(string direction);
-        void player_name(string player_one = "Chris");
+        void player_name(string player_one = "Darragh Walsh");
 
 public:
 	ZorkUL();

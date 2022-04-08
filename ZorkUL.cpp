@@ -17,12 +17,12 @@ void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
 	a = new Room("a");
-        a->addItem(new Item("x", 1, 11));
-        a->addItem(new Item("y", 2, 22));
+        a->addItem(new Item("Sword", 1, 11));
+        a->addItem(new Item("Spiked Mace", 2, 22));
       array_of_rooms.push_back(a);
 	b = new Room("b");
-        b->addItem(new Item("xx", 3, 33));
-        b->addItem(new Item("yy", 4, 44));
+        b->addItem(new Item("Shield", 3, 33));
+        b->addItem(new Item("Bow", 4, 44));
       array_of_rooms.push_back(b);
 	c = new Room("c");
       array_of_rooms.push_back(c);
@@ -54,6 +54,7 @@ void ZorkUL::createRooms()  {
     j->setExits(d, NULL, NULL, NULL);
 
         currentRoom = a;
+
 }
 
 /**
@@ -82,29 +83,35 @@ void ZorkUL::play() {
 
 void ZorkUL::player_name(string player_one) {
 
-        string answer;
-
+        cout << "Welcome to zork!" << endl;
         cout << endl;
-        cout << "If you would like to give your character a name type yes if not type no." << endl;
+        cout << "If you would like to give your character a name type \"yes\" if not type \"no\"." << endl;
         cout << endl;
 
-        cin >> answer;
+        string player_answer;
 
-        if (answer == "yes") {
+        cin >> player_answer;
+        cout << endl;
+
+        if (player_answer == "yes") {
 
             cout << "Enter player name: ";
             cin >> player_one;
+            cout << endl;
 
-            cout << "Player name is now " << player_one << endl;
+            cout << "Player name is now " << player_one << "." << endl;
+            cout << endl;
 
         } else {
 
-        cout << "Player name is now " << player_one << endl;
+        cout << "Player name is now " << player_one << "." << endl;
+        cout << endl;
 
     }
 }
 
 void ZorkUL::printWelcome() {
+
 	cout << "start"<< endl;
 	cout << "info for help"<< endl;
 	cout << endl;
@@ -225,6 +232,7 @@ void ZorkUL::goRoom(Command command) {
 		currentRoom = nextRoom;
 		cout << currentRoom->longDescription() << endl;
 	}
+
 }
 
 string ZorkUL::go(string direction) {
