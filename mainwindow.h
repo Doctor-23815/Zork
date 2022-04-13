@@ -5,6 +5,7 @@
 
 #include <QListWidget>
 #include "ZorkUL.h"
+#include "surroundings.h"
 
 //QT_BEGIN_NAMESPACE
 namespace Ui { class MainWindow; }
@@ -31,8 +32,6 @@ private slots:
     void on_teleport_pushButton_clicked();
 
     void on_info_pushButton_clicked();
-
-    void on_map_pushButton_clicked();
 
 private:
     Ui::MainWindow *ui;

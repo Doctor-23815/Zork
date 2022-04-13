@@ -11,6 +11,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->textEdit->append(QString::fromStdString(zork->printWelcome() + "\n"));
+
+    ui->mapDisplay->append(QString::fromStdString(zork->mapDisplay()));
 }
 
 MainWindow::~MainWindow()
@@ -20,26 +22,32 @@ MainWindow::~MainWindow()
 
 void MainWindow::goRoom(string direction) {
 
-    if (direction == "teleport") {
+    if (direction == "teleport" && zork->getCurrentRoom().description == "d") {
 
-        ui->textEdit->append(QString::fromStdString(zork->teleport() + "\n"));
+        coffeeMachine();
+
+    } else if (direction == "teleport") {
+
+            ui->textEdit->append(QString::fromStdString(zork->teleport() + "\n"));
 
     } else {
 
-        ui->textEdit->append(QString::fromStdString(zork->go_to_next_room() + "\n"));
+        ui->textEdit->append(QString::fromStdString(zork->goToRoom(direction) + "\n"));
+
+        if (zork->getCurrentRoom().description == "d") {
+
+            coffeeMachine();
+
+        }
+
+        }
 
     }
-}
-
 
 //
-/*
-void MainWindow::on_map_pushButton_clicked() {
 
-    ui->textEdit->append(QString::fromStdString(zork->showMap()));
 
-}
-*/
+
 void MainWindow::on_info_pushButton_clicked() {
 
     ui->textEdit->append(QString::fromStdString(zork->printHelp()));
