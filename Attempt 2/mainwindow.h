@@ -15,7 +15,7 @@ class MainWindow : public QMainWindow
 {
     Q_OBJECT
     friend class Room;
-// explicit
+    //explicit
 public:
     explicit MainWindow(QWidget *parent = nullptr);
     ~MainWindow();
@@ -36,6 +36,7 @@ private slots:
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
+    Surroundings *environment = new Surroundings();
     void goRoom(string direction);
 };
 #endif // MAINWINDOW_H

@@ -1,6 +1,7 @@
 #include "mainwindow.h"
 #include "ui_mainwindow.h"
 #include "ZorkUL.h"
+#include "surroundings.h"
 
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
@@ -11,6 +12,8 @@ MainWindow::MainWindow(QWidget *parent)
     ui->setupUi(this);
 
     ui->textEdit->append(QString::fromStdString(zork->printWelcome() + "\n"));
+
+    ui->textEdit->append(QString::fromStdString(environment->printEntrance() + "\n"));
 
     ui->mapDisplay->append(QString::fromStdString(zork->mapDisplay()));
 }
@@ -24,7 +27,7 @@ void MainWindow::goRoom(string direction) {
 
     if (direction == "teleport" && zork->getCurrentRoom().description == "d") {
 
-        coffeeMachine();
+        //coffeeMachine();
 
     } else if (direction == "teleport") {
 
@@ -36,7 +39,8 @@ void MainWindow::goRoom(string direction) {
 
         if (zork->getCurrentRoom().description == "d") {
 
-            coffeeMachine();
+
+            //coffeeMachine();
 
         }
 
