@@ -22,11 +22,11 @@ string Room::shortDescription() {
 }
 
 string Room::longDescription() {
-    return "room = " + description + ".\n" + displayItems() + exitString();
+    return "Current room = " + description + ".\n" + displayItems() + exitString();
 }
 
 string Room::exitString() {
-    string returnString = "\nexits =";
+    string returnString = "\nPossible exits =";
     for (map<string, Room*>::iterator i = exits.begin(); i != exits.end(); i++)
         // Loop through map
         returnString += "  " + i->first;	// access the "first" element of the pair (direction as a string)
@@ -48,10 +48,10 @@ void Room::addItem(Item *inItem) {
 }
 
 string Room::displayItems() {
-    string tempString = "items in room = ";
+    string tempString = "There are items in this room = ";
     int sizeItems = (itemsInRoom.size());
     if (itemsInRoom.size() < 1) {
-        tempString = "no items in room";
+        tempString = "There are no items in this room";
         }
     else if (itemsInRoom.size() > 0) {
        int x = (0);

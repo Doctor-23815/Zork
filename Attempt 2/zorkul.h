@@ -19,7 +19,7 @@ private:
     void goRoom(Command command);
     void createItems();
     void displayItems();
-    Room *currentRoom;
+    //Room *currentRoom;
 
 public:
     ZorkUL();
@@ -30,6 +30,8 @@ public:
     string printHelp();
     string mapDisplay();
     Room getCurrentRoom();
+    string printDescriptionOfRoom();
+    Room *currentRoom;
 };
 
 #endif /*ZORKUL_H_*/

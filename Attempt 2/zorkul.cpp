@@ -75,7 +75,13 @@ void ZorkUL::createRooms()  {
 string ZorkUL::printWelcome() {
     return "Welcome to Zork: The Amalgamation!\n\n"
            "You may now begin to play.\n\n"
-           "If you have any problems with the controls press the info button for help.\n\n" + currentRoom->longDescription();
+           "If you have any problems with the controls please press the info button for help.";
+}
+
+string ZorkUL::printDescriptionOfRoom() {
+
+    return "" + currentRoom->longDescription();
+
 }
 
 string ZorkUL::mapDisplay() {
