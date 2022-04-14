@@ -17,12 +17,15 @@ public:
     Surroundings();
     string printEntrance();
     string printCoffeeMachineRoom();
+    string printCoffeeList();
     string printEmpty();
     string printShield();
     string printStarted();
     string printEmptyThreeDoor();
     string printSafety();
     string printTheEnd();
+    string printPast();
+    string printAverage();
     string coffeeMachine (bool milk = false, bool sugar = false);
 
 };
