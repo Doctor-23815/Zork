@@ -3,21 +3,27 @@
 #include "ZorkUL.h"
 #include "surroundings.h"
 
+#include <string>
+#include <iostream>
+#include <QCoreApplication>
+#include <QTextStream>
+#include <QtWidgets/QWidget>
+
 MainWindow::MainWindow(QWidget *parent)
     : QMainWindow(parent)
     , ui(new Ui::MainWindow)
-// below added
 
 {
     ui->setupUi(this);
 
     ui->textEdit->append(QString::fromStdString(zork->printWelcome()  + "\n"));
 
-    ui->textEdit->append(QString::fromStdString(environment->printEntrance() + "\n"));
+    ui->textEdit->append(QString::fromStdString(environment->printEntrance()));
+
+    ui->textEdit->append(QString::fromStdString(zork->printOnTheDoor() + "\n"));
 
     ui->textEdit->append(QString::fromStdString(zork->printDescriptionOfRoom() + "\n"));
 
-    ui->mapDisplay->append(QString::fromStdString(zork->mapDisplay()));
 }
 
 MainWindow::~MainWindow()
@@ -45,7 +51,9 @@ void MainWindow::goRoom(string direction) {
 
             } else if (zork->getCurrentRoom().description == "e") {
 
-                    ui->textEdit->append(QString::fromStdString(environment->printEmpty() + "\n"));
+                    ui->textEdit->append(QString::fromStdString(environment->printPast()));
+
+                    ui->textEdit->append(QString::fromStdString(environment->printAverage()));
 
             } else if (zork->getCurrentRoom().description == "a") {
 
@@ -75,6 +83,8 @@ void MainWindow::goRoom(string direction) {
 
                     ui->textEdit->append(QString::fromStdString(environment->printTheEnd() + "\n"));
 
+                    buttonStopper();
+
                          }
 
     } else if (direction == "north" || direction == "south" || direction == "east" || direction == "west") {
@@ -95,7 +105,9 @@ void MainWindow::goRoom(string direction) {
 
                    } else if (zork->getCurrentRoom().description == "e") {
 
-                       ui->textEdit->append(QString::fromStdString(environment->printEmpty() + "\n"));
+                       ui->textEdit->append(QString::fromStdString(environment->printPast()));
+
+                       ui->textEdit->append(QString::fromStdString(environment->printAverage()));
 
                    } else if (zork->getCurrentRoom().description == "a") {
 
@@ -125,20 +137,20 @@ void MainWindow::goRoom(string direction) {
 
                        ui->textEdit->append(QString::fromStdString(environment->printTheEnd() + "\n"));
 
+                       buttonStopper();
+
                    }
 
     }
 
 }
 
-//
 void MainWindow::on_info_pushButton_clicked() {
 
     ui->textEdit->append(QString::fromStdString(zork->printHelp()));
 
 }
 
-//
 void MainWindow::on_north_pushButton_clicked() {
 
     goRoom("north");
@@ -167,5 +179,23 @@ void MainWindow::on_west_pushButton_clicked() {
 void MainWindow::on_teleport_pushButton_clicked() {
 
     goRoom("teleport");
+
+}
+
+void MainWindow::on_map_pushButton_clicked() {
+
+    ui->mapDisplay->append(QString::fromStdString(zork->mapDisplay()));
+    ui->map_pushButton->setEnabled(false);
+
+}
+
+void MainWindow::buttonStopper() {
+
+     ui->east_pushButton->setEnabled(false);
+     ui->info_pushButton->setEnabled(false);
+     ui->north_pushButton->setEnabled(false);
+     ui->south_pushButton->setEnabled(false);
+     ui->teleport_pushButton->setEnabled(false);
+     ui->west_pushButton->setEnabled(false);
 
 }

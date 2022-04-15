@@ -8,6 +8,7 @@
 #include <iostream>
 #include <string>
 #include <vector>
+
 using namespace std;
 
 class ZorkUL {
@@ -19,7 +20,6 @@ private:
     void goRoom(Command command);
     void createItems();
     void displayItems();
-    //Room *currentRoom;
 
 public:
     ZorkUL();
@@ -31,6 +31,7 @@ public:
     string mapDisplay();
     Room getCurrentRoom();
     string printDescriptionOfRoom();
+    string printOnTheDoor();
     Room *currentRoom;
 };
 

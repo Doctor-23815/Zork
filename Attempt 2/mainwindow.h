@@ -14,11 +14,11 @@ namespace Ui { class MainWindow; }
 class MainWindow : public QMainWindow
 {
     Q_OBJECT
-    friend class Room;
-    //explicit
+    friend class Room; // Implementation of Friendship.
+
 public:
     explicit MainWindow(QWidget *parent = nullptr);
-    ~MainWindow();
+    ~MainWindow(); // Implementation of Destructors and Memory Management.
 
 private slots:
     void on_north_pushButton_clicked();
@@ -33,10 +33,13 @@ private slots:
 
     void on_info_pushButton_clicked();
 
+    void on_map_pushButton_clicked();
+
 private:
     Ui::MainWindow *ui;
     ZorkUL *zork = new ZorkUL();
     Surroundings *environment = new Surroundings();
     void goRoom(string direction);
+    inline void buttonStopper(); // One instance of the implementation of private and the implementation of inline functions.
 };
 #endif // MAINWINDOW_H

@@ -9,7 +9,7 @@ using namespace std;
 using std::vector;
 
 class Room {
-    friend class MainWindow;
+    friend class MainWindow;  // Implementation of Friendship.
 
 private:
     string description;

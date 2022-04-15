@@ -7,6 +7,11 @@ Item::Item (string inDescription, int inWeightGrams, float inValue/**, int weapo
     /**weaponCheck(isWeapon);*/
 }
 
+Item::Item (string inDescription, int inWeightGrams) {
+    description = inDescription;
+    setWeight(inWeightGrams);
+}
+
 Item::Item(string inDescription) {
     description = inDescription;
 }

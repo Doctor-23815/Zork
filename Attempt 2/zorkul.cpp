@@ -3,14 +3,17 @@
 using namespace std;
 #include "zorkul.h"
 
-string mapInfo = "                                 \n" // instance of a global variable.
+// Instance of a global variable.
+string mapInfo = "                                 \n"
                  "              [h] --- [f] --- [g]\n"
                  "                          |      \n"
                  "              [c] --- [a] --- [b]\n"
                  "                          |      \n"
                  "              [i] --- [d] --- [e]\n"
                  "                          |      \n"
-                 "                         [j]   \n\n";
+                 "                         [j]     \n";
+
+string &mapReference = mapInfo;
 
 /*
 int main(int argc, char argv[]) {
@@ -24,23 +27,27 @@ ZorkUL::ZorkUL() {
     createRooms();
 }
 
+// Implementation of array of pointers.
 void ZorkUL::createRooms()  {
     Room *a, *b, *c, *d, *e, *f, *g, *h, *i, *j;
 
     a = new Room("a");
-        a->addItem(new Item("x", 1, 11));
-        a->addItem(new Item("y", 2, 22));
+        a->addItem(new Item("Coffee", 3, 33));
     b = new Room("b");
-        b->addItem(new Item("xx", 3, 33));
-        b->addItem(new Item("yy", 4, 44));
     c = new Room("c");
     d = new Room("d");
     e = new Room("e");
+        e->addItem(new Item("Blanket", 3));
+        e->addItem(new Item("Torch", 4));
+        e->addItem(new Item("Backpack", 3));
+        e->addItem(new Item("Book", 4));
     f = new Room("f");
     g = new Room("g");
     h = new Room("h");
     i = new Room("i");
+        i->addItem(new Item("Shield", 1, 11));
     j = new Room("j");
+        j->addItem(new Item("Map", 1, 11));
 
 //             (N, E, S, W)
     a->setExits(f, b, d, c);
@@ -84,21 +91,29 @@ string ZorkUL::printDescriptionOfRoom() {
 
 }
 
+// Function that calls the global variable.
 string ZorkUL::mapDisplay() {
 
         return mapInfo;
 
     }
 
-
 string ZorkUL::printHelp() {
-    return "";
+    return "Use the directional keys to move around the dungeon and the teleport key to teleport to a random room.\n";
 }
+
+// Function that calls the global variable.
+string ZorkUL::printOnTheDoor() {
+
+    return "Nailed to the door is a piece of parchment with some markings on it:\n\n" + mapReference;
+
+}
+
 string ZorkUL::teleport() {
     currentRoom = &array_of_rooms.at((int) rand() % array_of_rooms.size());
 
     if (currentRoom == nullptr) {
-        return "suffaction";
+        return "teleport failed!";
     } else {
         return currentRoom->longDescription();
     }
@@ -108,7 +123,7 @@ string ZorkUL::goToRoom(string direction) {
     Room* nextRoom = currentRoom->nextRoom(direction);
 
     if (nextRoom == NULL) {
-        return "You bump your head against a wall";
+        return "You bump your head against a wall.";
     } else {
         currentRoom = nextRoom;
         return currentRoom->longDescription();
@@ -116,5 +131,7 @@ string ZorkUL::goToRoom(string direction) {
 }
 
 Room ZorkUL::getCurrentRoom() {
+
     return *currentRoom;
+
 }

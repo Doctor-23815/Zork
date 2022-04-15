@@ -48,7 +48,7 @@ void Room::addItem(Item *inItem) {
 }
 
 string Room::displayItems() {
-    string tempString = "There are items in this room = ";
+    string tempString = "Items in this room = ";
     int sizeItems = (itemsInRoom.size());
     if (itemsInRoom.size() < 1) {
         tempString = "There are no items in this room";

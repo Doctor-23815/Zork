@@ -16,6 +16,7 @@ private:
 
 public:
     Item (string description, int inWeight, float inValue);
+    Item (string description, int inWeight); // Implementation of Function overloading.
     Item (string description);
     string getShortDescription();
     string getLongDescription();
