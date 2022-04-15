@@ -1,10 +1,11 @@
 #ifndef COMMAND_H_
 #define COMMAND_H_
 
+#include <exception>
 #include <string>
 using namespace std;
 
-class Command {
+class Command : public exception { // Implementation of Programmer defined exceptions.
 private:
     string commandWord;
     string secondWord;

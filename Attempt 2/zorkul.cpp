@@ -13,7 +13,7 @@ string mapInfo = "                                 \n"
                  "                          |      \n"
                  "                         [j]     \n";
 
-string &mapReference = mapInfo;
+string &mapReference = mapInfo; // Implementation of C++ References.
 
 /*
 int main(int argc, char argv[]) {
@@ -35,6 +35,7 @@ void ZorkUL::createRooms()  {
         a->addItem(new Item("Coffee", 3, 33));
     b = new Room("b");
     c = new Room("c");
+        c->addItem(new Item("Calculator", 3, 33));
     d = new Room("d");
     e = new Room("e");
         e->addItem(new Item("Blanket", 3));

@@ -55,6 +55,8 @@ void MainWindow::goRoom(string direction) {
 
                     ui->textEdit->append(QString::fromStdString(environment->printAverage()));
 
+                    ui->textEdit->append(QString::fromStdString(environment->printPastTwo()));
+
             } else if (zork->getCurrentRoom().description == "a") {
 
                     ui->textEdit->append(QString::fromStdString(environment->printCoffeeMachineRoom() + "\n"));
@@ -63,7 +65,7 @@ void MainWindow::goRoom(string direction) {
 
             } else if (zork->getCurrentRoom().description == "c") {
 
-                    ui->textEdit->append(QString::fromStdString(environment->printEmpty() + "\n"));
+                    ui->textEdit->append(QString::fromStdString(environment->printCalculator() + "\n"));
 
             } else if (zork->getCurrentRoom().description == "b") {
 
@@ -109,6 +111,8 @@ void MainWindow::goRoom(string direction) {
 
                        ui->textEdit->append(QString::fromStdString(environment->printAverage()));
 
+                       ui->textEdit->append(QString::fromStdString(environment->printPastTwo()));
+
                    } else if (zork->getCurrentRoom().description == "a") {
 
                        ui->textEdit->append(QString::fromStdString(environment->printCoffeeMachineRoom() + "\n"));
@@ -117,7 +121,7 @@ void MainWindow::goRoom(string direction) {
 
                    } else if (zork->getCurrentRoom().description == "c") {
 
-                       ui->textEdit->append(QString::fromStdString(environment->printEmpty() + "\n"));
+                       ui->textEdit->append(QString::fromStdString(environment->printCalculator() + "\n"));
 
                    } else if (zork->getCurrentRoom().description == "b") {
 

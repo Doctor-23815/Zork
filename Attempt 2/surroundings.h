@@ -20,8 +20,10 @@ public: // Some instances of public.
     string printSafety();
     string printTheEnd();
     string printPast();
+    string printPastTwo();
     string printAverage();
     string coffeeMachine(bool milk = false, bool sugar = false);
+    string printCalculator();
 };
 
 #endif // SURROUNDINGS_H

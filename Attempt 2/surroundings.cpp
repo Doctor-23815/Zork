@@ -46,7 +46,7 @@ string Surroundings::printSafety() {
 
 string Surroundings::printTheEnd() {
 
-    return "The End\n";
+    return "The End!\n";
 
 }
 
@@ -54,6 +54,17 @@ string Surroundings::printStarted() {
 
 
     return "Your back where you started!\n";
+}
+
+string Surroundings::printPast() {
+
+    return "As you enter the next room you see objects scattered all across the floor of the cave.\n"
+           "There's a blanket, torch and a backpack with a maths book in it.\n\n"
+           "Was somebody else down here?\n\n"
+           "You open the maths book and flip to a random page.\n"
+           "It reads, \"To get the average of 3 numbers add them all together then divide by the amount of numbers you want to find the average for.\"\n"
+           "And shows an example below it:\n"
+           "The numbers  0x16cebe83200 ,  0x16cebe83300  and  0x16cebe83040  have an average number of  7.";
 }
 
 string Surroundings::printEmptyThreeDoor() {
@@ -98,20 +109,6 @@ string Surroundings::printCoffeeList() {
 
 }
 
-string Surroundings::printPast() {
-
-    return "As you enter the next room you see objects scattered all across the floor of the cave.\n"
-           "There's a blanket, torch and a backpack with a maths book in it.\n\n"
-           "Was somebody else down here?\n\n"
-           "You open the maths book and flip to a random page.\n"
-           "It reads, \"To get the average of 3 numbers add them all together then divide by the amount of numbers you want to find the average for.\"\n"
-           "And shows an example below it:\n"
-           "The numbers  0x16cebe83200 ,  0x16cebe83300  and  0x16cebe83040  have an average number of  7.\n"
-           "The numbers used in the example are like no numbers you've ever seen.\n\n"
-           "What is going on down here?";
-
-}
-
 /* Was originally going to have a lock on a door that needed the answer to the question posed in this function
  * but ran out of time and chose to focus more on the C++ aspects of the code rather than the story.
  * The question was meant to randomised so a different answer would be required per game.*/
@@ -142,11 +139,31 @@ delete ptr3;
 return "";
 
 }
-/*
-template <typename T>
-T printShape(T shape) {
 
-    return
+string Surroundings::printPastTwo() {
+
+    return "The numbers used in the example are like no numbers you've ever seen.\n"
+           "What is going on down here?\n\n";
 
 }
-*/
+
+// Implementation of function templates.
+// Meant to intake double, int or float.
+// Used in conjunction with the maths book to solve scraped door lock puzzle.
+template <typename T>
+T itemCalculator(T num1, T num2, T num3) {
+
+    T solution = (num1 + num2 + num3) / 3;
+
+    return solution;
+
+}
+
+string Surroundings::printCalculator() {
+
+    return "The second you enter the room you find a calculator lying on the floor.\n"
+           "The numbers 6, 8 and 2 have already been inputed into the calculator.\n"
+           "You click enter and get 7.\n"
+           "You remember this for later...";
+
+}
